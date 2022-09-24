@@ -167,6 +167,7 @@
         return res.json();
       })
       .then((data) => {
+        console.log("*****", data);
         if (data.success) {
           $("#contactForm").html(
             "<div>You message was successfully submitted. We will be contacting you soon</div>"
