@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const nodemailer = require("nodemailer");
 
 router.post("/api/mailto", (req, res) => {
   let { name, email, phone, subject, message } = req.body;
@@ -30,7 +31,7 @@ router.post("/api/mailto", (req, res) => {
     if (error) {
       res.json(error);
     } else {
-      res.json("Email sent: " + info.response);
+      res.json({ success: true });
     }
   });
 });

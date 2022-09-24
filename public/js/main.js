@@ -45,7 +45,6 @@
     $(".btn-play").click(function () {
       $videoSrc = $(this).data("src");
     });
-    console.log($videoSrc);
 
     $("#videoModal").on("shown.bs.modal", function (e) {
       $("#video").attr(
@@ -134,5 +133,47 @@
     smartSpeed: 1000,
     items: 1,
     loop: true,
+  });
+
+  $("#contactForm").on("submit", (e) => {
+    e.preventDefault();
+
+    grecaptcha.execute();
+
+    const email = document.querySelector("#email").value;
+    const name = document.querySelector("#name").value;
+    const subject = document.querySelector("#subject").value;
+    const phone = document.querySelector("#phone").value;
+    const message = document.querySelector("#message").value;
+
+    const payload = {
+      name,
+      email,
+      phone,
+      subject,
+      message,
+    };
+
+    console.log("payload", payload);
+
+    fetch("/api/mailto", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        if (data.success) {
+          $("#contactForm").html(
+            "<div>You message was successfully submitted. We will be contacting you soon</div>"
+          );
+          $(".contact-form").addClass("form-center");
+          $("#contactForm").addClass("form-success");
+        }
+      });
   });
 })(jQuery);
