@@ -10052,3 +10052,19 @@ h6,
   padding: 0;
   list-style-type: none;
 }
+
+.navbar-brand {
+  padding: 7px 15px;
+}
+.navbar-brand >img {
+  height: 100px;
+  padding: 15px;
+  width: auto;
+}
+
+.footer-logo {
+  margin-bottom: 30px;
+}
+.footer-logo img {
+    max-width: 300px;
+}
