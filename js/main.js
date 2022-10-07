@@ -154,9 +154,7 @@
       message,
     };
 
-    console.log("payload", payload);
-
-    fetch("/api/mailto", {
+    fetch("https://allouttintlv.herokuapp.com/api/mailto", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
