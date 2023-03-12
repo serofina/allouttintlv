@@ -11,7 +11,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://allouttintlv.com"],
+    origin: ["https://allouttintlv.com","https://www.allouttintlv.com"],
   })
 );
 
